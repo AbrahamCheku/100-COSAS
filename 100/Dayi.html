@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>100 Cosas Que Me Gustan De Ti</title>
+  <style>
+    body {
+      background-color: #fff8f0;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    button {
+      font-size: 1.5em;
+      padding: 20px 40px;
+      background-color: #25D366;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #128C7E;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Presiona para enviarle algo bonito 💌</h1>
+  <button onclick="enviarFrase()">Enviar por WhatsApp</button>
+
+  <script>
+    const numero = '529821095773'; // +52 es la lada de México
+
+    const frases = [
+      "1. Tu corazón.",
+      "2. Tu sonrisa.",
+      "3. La forma tan especial que tienes de hacerme sonreír.",
+      // Puedes seguir agregando hasta 100...
+    ];
+
+    let usadas = [];
+
+    function enviarFrase() {
+      if (usadas.length === frases.length) {
+        usadas = [];
+      }
+
+      let index;
+      do {
+        index = Math.floor(Math.random() * frases.length);
+      } while (usadas.includes(index));
+
+      usadas.push(index);
+
+      const mensaje = encodeURIComponent(frases[index]);
+      const url = `https://wa.me/${numero}?text=${mensaje}`;
+      window.location.href = url;
+    }
+  </script>
+
+</body>
+</html>
+
